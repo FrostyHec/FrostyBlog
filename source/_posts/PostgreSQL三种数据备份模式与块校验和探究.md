@@ -11,6 +11,9 @@ tags: PostgreSQL, database
 > 小插曲：写完报告一周后宇阙就崩了，当时崩了七个小时靠备份恢复恢复的用户数据，可以看到备份在数据库管理中的重要性（）
 >
 
+注：由于宇阙图床不能直接外站访问因此图片丢了，可访问：https://www.yuque.com/stackoverflow-c1w4m/egpihd/wwh510w5syxyg90i 查看原文
+
+
 <h1 id="t56Xk">参考资料</h1>
 
 [PostgreSQL 备份与恢复（第一章）-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/1847436)
