@@ -1,11 +1,11 @@
 ---
-title: [探究实验] PostgreSQL三种数据备份模式与块校验和探究
+title: PostgreSQL三种数据备份模式与块校验和探究
 date: 2025-04-06 18:08:36
 tags: PostgreSQL, database
 ---
 测试一下
 
-[//]: # (<!-- more -->)
+<!-- more -->
 
 > 本文节选自个人报告《实验报告-探究数据库系统与传统文件读写间的表现差异》
 >
