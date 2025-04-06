@@ -3,7 +3,8 @@ title: PostgreSQL三种数据备份模式与块校验和探究
 date: 2025-04-06 18:08:36
 tags: PostgreSQL, database
 ---
-测试一下
+
+有关PostgreSQL物理备份、逻辑备份、PITR备份与块校验和功能的介绍&效果实验
 
 <!-- more -->
 
