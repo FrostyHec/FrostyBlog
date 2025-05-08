@@ -291,22 +291,26 @@ mjx-container[display="true"] + br {
 </ol>
 <h2 id="任务建模"><a href="#任务建模" class="headerlink" title="任务建模"></a>任务建模</h2><h3 id="有监督多分类问题"><a href="#有监督多分类问题" class="headerlink" title="有监督多分类问题"></a>有监督多分类问题</h3><p>最基础的一个任务建模是建模成有监督的多分类问题：</p>
 <h4 id="形式化"><a href="#形式化" class="headerlink" title="形式化"></a>形式化</h4><p>任务目标：假定<strong>所有可行文本</strong>构成的输入空间为 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.873ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 828 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D437" d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z"></path></g></g></g></svg></mjx-container> ，人工定义的<strong>有限互斥类别空间</strong> <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="16.284ex" height="2.034ex" role="img" focusable="false" viewBox="0 -705 7197.5 899"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path></g><g data-mml-node="mo" transform="translate(1037.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(2093.6,0)"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g><g data-mml-node="mn" transform="translate(466,-150) scale(0.707)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g><g data-mml-node="mo" transform="translate(869.6,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="msub" transform="translate(1314.2,0)"><g data-mml-node="mi"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g><g data-mml-node="mn" transform="translate(466,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g><g data-mml-node="mo" transform="translate(2183.8,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mo" transform="translate(2628.4,0)"><path data-c="2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path></g><g data-mml-node="msub" transform="translate(3967.1,0)"><g data-mml-node="mi"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g><g data-mml-node="mi" transform="translate(466,-150) scale(0.707)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g></g></g></g></g></svg></mjx-container>，找到一个准确的映射函数 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="10.242ex" height="2.059ex" role="img" focusable="false" viewBox="0 -705 4527.1 910"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g><g data-mml-node="mo" transform="translate(827.8,0)"><path data-c="3A" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path></g><g data-mml-node="mi" transform="translate(1383.6,0)"><path data-c="1D437" d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z"></path></g><g data-mml-node="mo" transform="translate(2489.3,0)"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g><g data-mml-node="mi" transform="translate(3767.1,0)"><path data-c="1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path></g></g></g></svg></mjx-container>，其输入输出如下：</p>
-<p>输入：一个文本文档（字符串）d</p>
-<p>输出：该文档所属类别c，其中 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.09ex;" xmlns="http://www.w3.org/2000/svg" width="5.465ex" height="1.686ex" role="img" focusable="false" viewBox="0 -705 2415.6 745"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g><g data-mml-node="mo" transform="translate(710.8,0)"><path data-c="2208" d="M84 250Q84 372 166 450T360 539Q361 539 377 539T419 540T469 540H568Q583 532 583 520Q583 511 570 501L466 500Q355 499 329 494Q280 482 242 458T183 409T147 354T129 306T124 272V270H568Q583 262 583 250T568 230H124V228Q124 207 134 177T167 112T231 48T328 7Q355 1 466 0H570Q583 -10 583 -20Q583 -32 568 -40H471Q464 -40 446 -40T417 -41Q262 -41 172 45Q84 127 84 250Z"></path></g><g data-mml-node="mi" transform="translate(1655.6,0)"><path data-c="1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path></g></g></g></svg></mjx-container></p>
-<p>机器学习过程：机器学习模型基于预标签的数据集 $ DS = { (d_1,c_i), (d_2, c_j), … ( d_n, c_k ) <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.452ex;" xmlns="http://www.w3.org/2000/svg" width="18.1ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 8000 950"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">学</text></g><g data-mml-node="mi" transform="translate(1000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">习</text></g><g data-mml-node="mi" transform="translate(2000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">这</text></g><g data-mml-node="mi" transform="translate(3000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">一</text></g><g data-mml-node="mi" transform="translate(4000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">映</text></g><g data-mml-node="mi" transform="translate(5000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">射</text></g><g data-mml-node="mi" transform="translate(6000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">函</text></g><g data-mml-node="mi" transform="translate(7000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">数</text></g></g></g></svg></mjx-container> f $</p>
+<ul>
+<li>输入：一个文本文档（字符串）d</li>
+<li>输出：该文档所属类别c，其中 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.09ex;" xmlns="http://www.w3.org/2000/svg" width="5.465ex" height="1.686ex" role="img" focusable="false" viewBox="0 -705 2415.6 745"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g><g data-mml-node="mo" transform="translate(710.8,0)"><path data-c="2208" d="M84 250Q84 372 166 450T360 539Q361 539 377 539T419 540T469 540H568Q583 532 583 520Q583 511 570 501L466 500Q355 499 329 494Q280 482 242 458T183 409T147 354T129 306T124 272V270H568Q583 262 583 250T568 230H124V228Q124 207 134 177T167 112T231 48T328 7Q355 1 466 0H570Q583 -10 583 -20Q583 -32 568 -40H471Q464 -40 446 -40T417 -41Q262 -41 172 45Q84 127 84 250Z"></path></g><g data-mml-node="mi" transform="translate(1655.6,0)"><path data-c="1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path></g></g></g></svg></mjx-container></li>
+<li>机器学习过程：机器学习模型基于预标签的数据集 $ DS = { (d_1,c_i), (d_2, c_j), … ( d_n, c_k ) <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.452ex;" xmlns="http://www.w3.org/2000/svg" width="18.1ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 8000 950"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">学</text></g><g data-mml-node="mi" transform="translate(1000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">习</text></g><g data-mml-node="mi" transform="translate(2000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">这</text></g><g data-mml-node="mi" transform="translate(3000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">一</text></g><g data-mml-node="mi" transform="translate(4000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">映</text></g><g data-mml-node="mi" transform="translate(5000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">射</text></g><g data-mml-node="mi" transform="translate(6000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">函</text></g><g data-mml-node="mi" transform="translate(7000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">数</text></g></g></g></svg></mjx-container> f $</li>
+</ul>
 <h4 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h4><p>有监督多分类问题里面最简单的就是二分类问题，虽然简单其实在text classification里也是相当常用的（诈骗邮件分类就是一个典型的多分类问题）</p>
 <p>建模成有监督多分类问题的Pros and Cons:</p>
-<p>Pros: </p>
-<ol>
+<ul>
+<li>Pros: <ol>
 <li>任务研究比较充分，模型很多且在大量场景中表现出色</li>
 </ol>
-<p>Cons: </p>
-<ol>
+</li>
+<li>Cons: <ol>
 <li>需要一个较大规模的数据集（取决于实际任务难度，一个快速验证的场景基本上需要1k条数据，而像邮件分类这种任务基本上需要1w-2w条数据（包含训练+测试）），很可能需要人工label</li>
 <li>模型不一定具备可扩展性（部分模型，新增类型需要重新训练）</li>
 <li>模型不一定能处理未知场景类别（可以考虑引入“background”类别应对类似情况）</li>
 <li>经典的classification要遇到的挑战（类不平衡，etc…）</li>
 </ol>
+</li>
+</ul>
 <h3 id="无监督聚类问题"><a href="#无监督聚类问题" class="headerlink" title="无监督聚类问题"></a>无监督聚类问题</h3><p>TODO 先占坑</p>
 <h3 id="多标签问题"><a href="#多标签问题" class="headerlink" title="多标签问题"></a>多标签问题</h3><p>TODO 先占坑</p>
 <h1 id="基于有监督多分类问题建模的研究工作"><a href="#基于有监督多分类问题建模的研究工作" class="headerlink" title="基于有监督多分类问题建模的研究工作"></a>基于有监督多分类问题建模的研究工作</h1><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>由于输入文本是字符串形式的，因此研究关键在于两个环节：</p>
@@ -316,10 +320,7 @@ mjx-container[display="true"] + br {
 </ol>
 <p>其中第一步的特征挖掘十分重要，将<strong>极大程度上决定分类效果的上限</strong><br>基本上主流框架遵循下面三个基础步骤：</p>
 <ol>
-<li>Tokenization: 对输入文本进行分词/分符，最终构成一个token向量</li>
-</ol>
-<p>一般情况下Token，可能是一个完整的短语（英语较少，中文很多），词汇，词根词缀，乃至基本的单char字符</p>
-<ol start="2">
+<li>Tokenization: 对输入文本进行分词/分符，最终构成一个token向量<br>一般情况下Token，可能是一个完整的短语（英语较少，中文很多），词汇，词根词缀，乃至基本的单char字符</li>
 <li>Embeddings: 对于token向量，将其映射为一个特征向量x，作为模型输入</li>
 </ol>
 <p>映射得到的特征向量常见的有三个结构：</p>
@@ -331,44 +332,42 @@ mjx-container[display="true"] + br {
 <h2 id="文本特征处理"><a href="#文本特征处理" class="headerlink" title="文本特征处理"></a>文本特征处理</h2><h3 id="文本特征的性质"><a href="#文本特征的性质" class="headerlink" title="文本特征的性质"></a>文本特征的性质</h3><p>与其它数据（文本、时间序列）不同，文本数据具备独特的性质。在分析任务模型时，可以从如下角度定性/定量分析给定任务文本特征（尤其是在该特征上的可分性）&amp;尝试明确任务需/简化任务难度：</p>
 <ol>
 <li><p>非定长性：</p>
-<p>1.1 输入文本往往都是非定长的</p>
-<p>1.2 输入文本集中在一定范围内（可以通过数据分析查看文本长度分布情况）</p>
-<p>1.3 输入文本可能存在极端长度（使用特殊处理方法，如截断处理）</p>
-</li>
-<li><p>语义整体性：整体性主要体现在下面几个方面：</p>
 <ol>
-<li><p>【多数有义性】文本中的绝大部分token都对整体语义信息有一定程度贡献，多个较小的语义贡献被移除也会导致整体语言的语义丧失（举例：”There is an apple under the tree”，如果移除所有虚词变成”There apple tree”，会导致显著的语义模糊）</p>
-</li>
-<li><p>【长距离关联性】在自然语言中，一个/一组token的语义信息可能与较远距离外的另一个/组token具备强关联性</p>
-</li>
+<li>输入文本往往都是非定长的</li>
+<li>输入文本集中在一定范围内（可以通过数据分析查看文本长度分布情况）</li>
+<li>输入文本可能存在极端长度（使用特殊处理方法，如截断处理）</li>
 </ol>
-<p>2.1  到底有多少的token会对我的distinguishing带来贡献？</p>
+</li>
+<li><p>语义整体性：</p>
 <ol>
-<li><p>有些时候数据集可以简单地依据少数几个/组token便完成classification，这个时候用一些简单地XGBoost/RF之类的模型都可以取得很好的结果，而且相较于重型模型还具备比较强的鲁棒性（不易过拟合）；在特征提取阶段也可以大刀阔斧地移除无用噪声词</p>
+<li>整体性主要体现在下面几个方面：<ul>
+<li>【多数有义性】文本中的绝大部分token都对整体语义信息有一定程度贡献，多个较小的语义贡献被移除也会导致整体语言的语义丧失（举例：”There is an apple under<br>the tree”，如果移除所有虚词变成”There apple tree”，会导致显著的语义模糊）</li>
+<li>【长距离关联性】在自然语言中，一个/一组token的语义信息可能与较远距离外的另一个/组token具备强关联性</li>
+</ul>
 </li>
-<li><p>反之，如果token都对distinguishability有一定贡献，则需要进一步评估决策边界是否是复杂非线性地，并进一步使用复杂模型（比如MLP）学习非线性特征</p>
+<li>思考：到底有多少的token会对我的distinguishing带来贡献？<ul>
+<li>有些时候数据集可以简单地依据少数几个/组token便完成classification，这个时候用一些简单地XGBoost/RF之类的模型都可以取得很好的结果，而且相较于重型模型还具备比较强的鲁棒性（不易过拟合）；在特征提取阶段也可以大刀阔斧地移除无用噪声词</li>
+<li>反之，如果token都对distinguishability有一定贡献，则需要进一步评估决策边界是否是复杂非线性地，并进一步使用复杂模型（比如MLP）学习非 线性特征</li>
+</ul>
 </li>
-</ol>
-<p>2.3 对于当前的任务场景，长距离关联性对于distinguishability是否是显著的？</p>
-<ol>
-<li><p>如果不显著，可以使用强局部性的一些模型，可能会更加轻量（如CNN）；</p>
-</li>
-<li><p>中等程度局部性的模型推荐RNN-based的模型</p>
-</li>
-<li><p>若需要捕捉长距离的语义信息以进行分类决策，现有的SOTA基本都是Transformer-based + Attention的模型。</p>
+<li>思考：对于当前的任务场景，长距离关联性对于distinguishability是否是显著的？<ul>
+<li>如果不显著，可以使用强局部性的一些模型，可能会更加轻量（如CNN）；</li>
+<li>中等程度局部性的模型推荐RNN-based的模型</li>
+<li>若需要捕捉长距离的语义信息以进行分类决策，现有的SOTA基本都是Transformer-based + Attention的模型。</li>
+</ul>
 </li>
 </ol>
 </li>
-<li><p>语序信息：在自然语言中，语序/语言结构会显著改变整体的语义信息；建模时请思考：</p>
-<p>3.1 对于当前的任务场景，语序/语言结构信息对于distinguishability是否是显著的？</p>
-<p>3.2 如果不显著，多大程度（粒度）上的顺序打乱会对distinguishability造成影响？</p>
+<li><p>语序信息：在自然语言中，语序/语言结构会显著改变整体的语义信息；建模时请思考： </p>
 <ol>
-<li><p>对于可以word完全乱序的case，直接BoW模型都是可以的，上重型模型几乎不会有显著提升</p>
+<li>对于当前的任务场景，语序/语言结构信息对于distinguishability是否是显著的？</li>
+<li>如果不显著，多大程度（粒度）上的顺序打乱会对distinguishability造成影响？<ul>
+<li>对于可以word完全乱序的case，直接BoW模型都是可以的，上重型模型几乎不会有显著提升</li>
+<li>对于低显著性的模型，可以考虑使用一个简化模型，或者在一些建模的过程中不引入层级信息</li>
+</ul>
 </li>
-<li><p>对于低显著性的模型，可以考虑</p>
-</li>
+<li>如果是显著的，BoW之类的简化模型可能并不合适。考虑进阶模型（Transformer-based / RNN-based ）考虑额外添加[SEP]和[CLS]等特殊token？</li>
 </ol>
-<p>3.3 如果是显著的，BoW之类的简化模型可能并不合适。考虑进阶模型（Transformer-based / RNN-based ）考虑额外添加[SEP]和[CLS]等特殊token？</p>
 </li>
 </ol>
 <h3 id="Tokenization"><a href="#Tokenization" class="headerlink" title="Tokenization"></a>Tokenization</h3><h4 id="数据的基本降噪"><a href="#数据的基本降噪" class="headerlink" title="数据的基本降噪"></a>数据的基本降噪</h4><p>基本的数据降噪过程主要包含如下选项，选项的选用需要结合任务场景进行分析，并结合实验验证效果：</p>
@@ -376,18 +375,22 @@ mjx-container[display="true"] + br {
 <li><p>大小写统一；一般情况下大小写没有提供太多的语义信息，因此可以全部转小写。不过在特殊场景（比如spam email classification）中可能还是能提供一定的distinguishable信息的</p>
 </li>
 <li><p>文本清洗：去除无效的文本字符等，主要可选去除如下信息</p>
-<p>2.1 结构化存储符号（比如HTML标签）</p>
-<p>2.2 标点符号</p>
-<p>2.3 特殊字符：非ASCII字符等</p>
-<p>2.4 非英文词汇：对于英文文本，英文词汇占据了主要的语言语义，因此可能可以去除。不过这一步需要慎重考虑非英文词汇部分文本的distinguishable程度</p>
-<p>2.5 停用词：停用词如“the”、“is”、“at”等对分类任务通常无实际意义，在简单的分类任务在也往往会被去除。</p>
-<p>2.6 数字</p>
-<p>2.7  其它无关于任务的内容</p>
+<ol>
+<li>结构化存储符号（比如HTML标签）</li>
+<li>标点符号</li>
+<li>特殊字符：非ASCII字符等</li>
+<li>非英文词汇：对于英文文本，英文词汇占据了主要的语言语义，因此可能可以去除。不过这一步需要慎重考虑非英文词汇部分文本的distinguishable程度</li>
+<li>停用词：停用词如“the”、“is”、“at”等对分类任务通常无实际意义，在简单的分类任务在也往往会被去除。</li>
+<li>数字</li>
+<li>其它无关于任务的内容</li>
+</ol>
 </li>
 <li><p>词形还原（Lemmatization）：主要针对屈折语，一般分为下面两类：</p>
-<p>3.1 词干提取：将单词还原为词根（如“running”→“run”）</p>
-<p>3.2 词形还原：将词语还原为其原型（如“better”→“good”）</p>
-<p> 词形还原主要旨在降低模型的学习难度，trade off是会轻微的损失语义信息</p>
+<ul>
+<li>词干提取：将单词还原为词根（如“running”→“run”）</li>
+<li>词形还原：将词语还原为其原型（如“better”→“good”） </li>
+<li>词形还原主要旨在降低模型的学习难度，trade off是会轻微的损失语义信息</li>
+</ul>
 </li>
 <li><p>去除低频词：尤其对于Count/TF-IDF等比较简单的有效，主要是用来降低特征数量的</p>
 </li>
@@ -401,59 +404,53 @@ mjx-container[display="true"] + br {
 <p>各种分词器的代码实现可以参考<a href="TODO-implementation-lib-link-of-above">链接</a></p>
 <p>性能考量：绝大多数的tokenization复杂度的都是接近于O(CharLen)的（不过常数有区别，基于词典的tokenization一般会慢一些）</p>
 <h5 id="Word-Level"><a href="#Word-Level" class="headerlink" title="Word-Level"></a>Word-Level</h5><p>对于英文等基于空格分隔的文字系统，这个基本上是最简单的分词方法（直接按照空格进行分词）。而对于中文等无空格分割文字系统，这一部分稍显困难，可以使用词汇表方法（比如在中文分词领域最常用的<a target="_blank" rel="noopener" href="https://github.com/fxsjy/jieba">jieba分词</a>）进行词汇分词。</p>
-<p>Pros: 简单，完整保留词汇结构便于模型学习</p>
-<p>Cons: </p>
-<ol>
-<li><p>对于相当多的文字系统可能会生成大量的同义token（如run,running）等，提高了模型的学习难度，可能需要<strong>词形还原</strong>。</p>
-</li>
-<li><p>存在未见词问题等（具体讨论参见<a href="#%E6%9C%AA%E8%A7%81%E8%AF%8D%E9%97%AE%E9%A2%98">后续章节</a>）</p>
-</li>
+<ul>
+<li>Pros: 简单，完整保留词汇结构便于模型学习</li>
+<li>Cons: <ol>
+<li>对于相当多的文字系统可能会生成大量的同义token（如run,running）等，提高了模型的学习难度，可能需要<strong>词形还原</strong>。</li>
+<li>存在未见词问题等（具体讨论参见<a href="#%E6%9C%AA%E8%A7%81%E8%AF%8D%E9%97%AE%E9%A2%98">后续章节</a>）</li>
 </ol>
-<p>使用场景：<strong>较低任务难度、强自然语言语义信息</strong></p>
+</li>
+<li>使用场景：<strong>较低任务难度、强自然语言语义信息</strong></li>
+</ul>
 <h5 id="SubWord-level"><a href="#SubWord-level" class="headerlink" title="SubWord-level"></a>SubWord-level</h5><p>Subword分词介于Char-level和Word-level之间，基本思想是<strong>提取字符高频对并进行合并</strong><br>（主流）；或对词汇基于词典进行语义结构拆分（较少）；主流方法比较容易实现机器自动化学习，只需要大量的有效文本，无需人工构建词典表，因此使用较多。</p>
 <p>常见的SubWord分词方法：BPE、Unigram、WordPiece等，具体技术原理参考<a href="TODO-complete-link-at-here">字词级Tokenizer实现</a>；</p>
 <p>分词示例（一个可能的基于subword的分词结果）：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">running -&gt; (run, n, ing); </span><br><span class="line">自然语言处理 -&gt; (自然语言, 处理);</span><br></pre></td></tr></table></figure>
 
-<p>Pros: </p>
-<ol>
-<li><p>有效平衡词表大小与泛化能力，无需词形还原等</p>
-</li>
-<li><p>相较于word-level能够学习更细粒度的语言组信息（比如词根），对未见词问题处理较好</p>
-</li>
+<ul>
+<li>Pros:<ol>
+<li>有效平衡词表大小与泛化能力，无需词形还原等</li>
+<li>相较于word-level能够学习更细粒度的语言组信息（比如词根），对未见词问题处理较好</li>
 </ol>
-<p>Cons: </p>
-<ol>
-<li><p>相较于Char-level可能损失/改变部分语义信息（分词不当的情况下）</p>
 </li>
-<li><p>需要数据集训练分词器，存在训练开销（目前已有很多数据集/训练好的分词器表，但需要评估数据集的分词能力是否适配于当前任务场景，避免分词不当）</p>
-</li>
+<li>Cons:<ol>
+<li>相较于Char-level可能损失/改变部分语义信息（分词不当的情况下）</li>
+<li>需要数据集训练分词器，存在训练开销（目前已有很多数据集/训练好的分词器表，但需要评估数据集的分词能力是否适配于当前任务场景，避免分词不当）</li>
 </ol>
-<p>使用场景: <strong>通用程度最高、成熟分词器可用/可训练</strong></p>
+</li>
+<li>使用场景: <strong>通用程度最高、成熟分词器可用/可训练</strong></li>
+</ul>
 <h5 id="Char-level"><a href="#Char-level" class="headerlink" title="Char-level"></a>Char-level</h5><p>Char-level的分词方法十分简单粗暴，往往直接使用OneHotEncoding（或LabelEncoding）方法</p>
-<p>Pros: </p>
-<ol>
-<li><p>简单，能<strong>最大程度的完整保留全部的语义文本信息</strong>，不会因为基于自然语言语义处理的方法产生信息损失</p>
-</li>
-<li><p>能够处理未见词问题（不过模型可能对于未见词/拼写错误的表现并不鲁棒）</p>
-</li>
+<ul>
+<li>Pros:<ol>
+<li>简单，能<strong>最大程度的完整保留全部的语义文本信息</strong>，不会因为基于自然语言语义处理的方法产生信息损失</li>
+<li>能够处理未见词问题（不过模型可能对于未见词/拼写错误的表现并不鲁棒）</li>
 </ol>
-<p>Cons: <strong>模型学习难度较大</strong></p>
-<ol>
-<li><p><strong>生成序列长度极长</strong>（对于英文文本，基本上是Word-level的6倍以上），需要模型捕捉长举例语义信息</p>
 </li>
-<li><p><strong>单字符几乎无实际含义</strong>，需要模型结合前后字符（编码出的数字/向量）才能恢复基本语义，<strong>需要模型能够有效捕捉这个局部语义极值</strong>（ps: CNN-based<br>的捕捉能力其实就已经足够基于字符捕捉词汇语义了）</p>
-</li>
+<li>Cons: <strong>模型学习难度较大</strong><ol>
+<li><strong>生成序列长度极长</strong>（对于英文文本，基本上是Word-level的6倍以上），需要模型捕捉长举例语义信息</li>
+<li><strong>单字符几乎无实际含义</strong>，需要模型结合前后字符（编码出的数字/向量）才能恢复基本语义，<strong>需要模型能够有效捕捉这个局部语义极值</strong>（ps: CNN-based 的捕捉能力其实就已经足够基于字符捕捉词汇语义了）</li>
 </ol>
-<p>使用场景：<strong>较低任务难度、强局部性、无空格分割（如短字符串分类）</strong> </p>
+</li>
+<li>使用场景：<strong>较低任务难度、强局部性、无空格分割（如短字符串分类）</strong></li>
+</ul>
 <p>特殊的，针对表意文字系统（如中文），由于单字包含了一定的语义信息，使用char-level的“字”切分也能保留相当程度的语义信息以供后续学习</p>
-<p><strong>OneHotEncoding得到的矩阵基本上是可接受的</strong>（字母系统基本上只有&lt;100个字母），不过对于中文这类的表意文字系统会比较麻烦（常用字也接近5000<br>左右），只能说需要基于实际模型和机器情况综合评估</p>
+<p><strong>OneHotEncoding得到的矩阵基本上是可接受的</strong>（字母系统基本上只有&lt;100个字母），不过对于中文这类的表意文字系统会比较麻烦（常用字也接近5000左右），只能说需要基于实际模型和机器情况综合评估</p>
 <h4 id="特殊分词补充"><a href="#特殊分词补充" class="headerlink" title="特殊分词补充"></a>特殊分词补充</h4><p>可以考虑对上述分词结果进行补充以降低模型的学习难度（提高文本可理解能力），比如：</p>
 <ol>
-<li><p>对于简单的embeddings方法模型，可能会丢失复杂特殊字符串的信息/模型无法直接基于原始信息学习复杂规律（比如email）。可以使用regex提取特殊特征进行编码，降低模型的学习负担</p>
-</li>
-<li><p>Transformer-based等方法也会在句子中嵌入特殊token（比如[CLS]、[SEP]）token，用于辅助模型聚合语义信息/判断分句等</p>
-</li>
+<li>对于简单的embeddings方法模型，可能会丢失复杂特殊字符串的信息/模型无法直接基于原始信息学习复杂规律（比如email）。可以使用regex提取特殊特征进行编码，降低模型的学习负担</li>
+<li>Transformer-based等方法也会在句子中嵌入特殊token（比如[CLS]、[SEP]）token，用于辅助模型聚合语义信息/判断分句等</li>
 </ol>
 <h3 id="Embeddings"><a href="#Embeddings" class="headerlink" title="Embeddings"></a>Embeddings</h3><p>Embeddings模块的目标是：<strong>将token序列映射成特征向量x作为模型输入</strong>。主流的方法可以分成三类，下面解释分类与经典方法</p>
 <ol>
@@ -482,14 +479,12 @@ mjx-container[display="true"] + br {
 </ol>
 <p>tokenSequence定长讨论：</p>
 <ol>
-<li><p>很显然如果token定长将很难处理变长文本情况（将每个输入都padding到上万的token是很不现实的）。</p>
-</li>
-<li><p>但对于许多文本分类任务，tokenNums可能并不大（或者绝大多数token都小于某个长度（major<br>case）），因此会设置一个适中的maxTokenNums，然后padding到这个长度是可接受的（常见于比较简单的任务）<strong>【需要分析任务的string长度特点】</strong></p>
-</li>
+<li>很显然如果token定长将很难处理变长文本情况（将每个输入都padding到上万的token是很不现实的）。</li>
+<li>但对于许多文本分类任务，tokenNums可能并不大（或者绝大多数token都小于某个长度（major<br>case）），因此会设置一个适中的maxTokenNums，然后padding到这个长度是可接受的（常见于比较简单的任务）<strong>【需要分析任务的string长度特点】</strong></li>
 </ol>
 <p>对于爆token的情况：基本上采取截断处理；<strong>可以考虑使用summary/外置query库</strong></p>
 <h3 id="文本处理的常见问题"><a href="#文本处理的常见问题" class="headerlink" title="文本处理的常见问题"></a>文本处理的常见问题</h3><p>这里主要讨论一些文本处理的常见问题（挑战性的cases）；</p>
-<p>需要注意的是这些挑战性的case在许多分类下游任务里是<strong>高度corner<br>的</strong>：</p>
+<p>需要注意的是这些挑战性的case在许多分类下游任务里是<strong>高度corner的</strong>：</p>
 <ol>
 <li><strong>不一定需要费工夫去处理</strong></li>
 <li><strong>处理了可能也（几乎）不影响distinguishability</strong></li>
@@ -500,42 +495,46 @@ mjx-container[display="true"] + br {
 <li>连写（空格丢失等导致无法分词，如lookat）</li>
 <li>拼写错误（拼写错误矫正可参考[TODO](TODO The Implementation of Spelling-Correction Techniques)</li>
 </ol>
-<p>未见词问题的最优处理方式遵循如下两点：<br>P-A. 尽可能依据词汇组成，推测其含义（对于拼写错误，则是依据错误的拼写推测实际的正确拼写）<br>P-B. 无法推测含义的保证不报错，或专门标注其语义为”UNKNOWN”</p>
+<p>未见词问题的最优处理方式遵循如下两点：</p>
+<ol>
+<li><strong>P-A:</strong> 尽可能依据词汇组成，推测其含义（对于拼写错误，则是依据错误的拼写推测实际的正确拼写）</li>
+<li><strong>P-B:</strong> 无法推测含义的保证不报错，或专门标注其语义为”UNKNOWN”</li>
+</ol>
 <p>对于三种不同的分词方法：</p>
 <ol>
 <li><p>Word-Level的分词方法无法直接解决未见词</p>
-<p>1.1 常见的处理方法基本只考虑了P-B（忽略，或者映射成[UNKNOWN] token）这种方法会相当程度丢失语义信息</p>
-<p>1.2 P-A部分</p>
 <ol>
-<li><p>尝试找一个相似的已有词汇可以解决拼写错误的case</p>
-</li>
-<li><p>全新单词/连写等可以勉强尝试拆分，但会受制于word-level不会学习词缀信息的问题</p>
-</li>
+<li>常见的处理方法基本只考虑了P-B（忽略，或者映射成[UNKNOWN] token）这种方法会相当程度丢失语义信息</li>
+<li>P-A部分<ol>
+<li>尝试找一个相似的已有词汇可以解决拼写错误的case</li>
+<li>全新单词/连写等可以勉强尝试拆分，但会受制于word-level不会学习词缀信息的问题</li>
 </ol>
 </li>
 </ol>
-<p>Word-level对未见词的处理能力实际上是有限的，如果未见词情况比较严重都转战SubWord-Level或者Char-Level了</p>
-<ol start="2">
+<p>ps: Word-level对未见词的处理能力实际上是有限的，如果未见词情况比较严重都转战SubWord-Level或者Char-Level了</p>
+</li>
 <li><p>SubWord-Level</p>
-<p>2.1 P-A部分</p>
 <ol>
-<li><p>船新单词和连写能够比较好的infer语义</p>
+<li><p>P-A部分</p>
+<ol>
+<li>船新单词和连写能够比较好的infer语义</li>
+<li>拼写错误很可能直接变成UNKNOWN<br>word（如果Tokenizer不包含单字母）或者子词（如果包含单字母/错拼可拆分）；可以尝试找一个相似的已有词汇可以解决拼写错误的case（类似于拼写错误纠正器）</li>
+</ol>
+<p>ps: 许多模型具备一定的<strong>语境填空</strong>能力可以补全相应信息</p>
 </li>
-<li><p>拼写错误很可能直接变成UNKNOWN<br>word（如果Tokenizer不包含单字母）或者子词（如果包含单字母/错拼可拆分）；可以尝试找一个相似的已有词汇可以解决拼写错误的case（类似于拼写错误纠正器）</p>
+<li><p>需要特殊机制处理P-B（比如对于未知字符直接映射到UNKNOWN）</p>
 </li>
 </ol>
-<p>   ps: 许多模型具备一定的<strong>语境填空</strong>能力可以补全相应信息</p>
-<p>2.2 需要特殊机制处理P-B（比如对于未知字符直接映射到UNKNOWN）</p>
 </li>
 <li><p>Char-Level</p>
-<p>2.1 P-A部分</p>
 <ol>
-<li><p>对于船新单词和连写的处理很OK</p>
-</li>
-<li><p>但是对于拼写错误，只能<strong>仰仗模型是否能对局部特征扰动鲁棒</strong>了；或者引入一个预检查的机制（不过很可能有不小的性能开销）</p>
-</li>
+<li>P-A部分<ol>
+<li>对于船新单词和连写的处理很OK</li>
+<li>但是对于拼写错误，只能<strong>仰仗模型是否能对局部特征扰动鲁棒</strong>了；或者引入一个预检查的机制（不过很可能有不小的性能开销）</li>
 </ol>
-<p>2.2 P-B部分：只需要处理未知字符即可（一般都是选择直接忽略）；模型会努力infer任何有效的字符组的含义</p>
+</li>
+<li>P-B部分：只需要处理未知字符即可（一般都是选择直接忽略）；模型会努力infer任何有效的字符组的含义</li>
+</ol>
 </li>
 </ol>
 <h2 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h2><p>一般可以分成：传统ML方法,DL方法两类</p>
@@ -565,39 +564,38 @@ mjx-container[display="true"] + br {
 <p>在<a href="#Overview">本章的Overview</a>中已经提到了特征挖掘的重要性。实际上，对于较为简单的分类任务&amp;正常的数据集，即便是在第二步选择一个非常简单的模型（LR, RF）也能取得相当好的效果（F1&gt;80%），而且简单地分类任务任务其实占majority ，因为语义信息的可区分性其实是相当明显的。</p>
 <p>理论上建议模型/方法的选择从简到难，也节省运算资源: D。下面列一个可供参考的流程</p>
 <ol>
-<li><p>数据集分析&amp;Tokenization方法确定：</p>
-<p> 1.1 分析任务场景下文本数据的空间分布规律：string的字符集，长度(avg,min,max,medium)<br>，前后关联性，语义信息性（自然语言？代码语言？），顺序重要程度，可参考<a href="#%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81%E7%9A%84%E6%80%A7%E8%B4%A8">文本特征性质</a> <a id="规律分析STEP"></a></p>
-<p> 1.2 分析潜在的重要特征（distinguishable）</p>
-<p> 1.3 确定基本的降噪预处理过程（参考<a href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%99%8D%E5%99%AA">基础降噪过程</a>）</p>
-<p> 1.4 确定分词方法（参考<a href="#%E5%88%86%E8%AF%8D">分词方法</a>）</p>
-<p> 1.5 如有必要，可以进行特征补充（参考<a href="#%E7%89%B9%E6%AE%8A%E5%88%86%E8%AF%8D%E8%A1%A5%E5%85%85">分词补充</a>）</p>
-<p> 1.6 迭代1.3-1.5的过程，直到选出最为合适的Tokenization方法</p>
+<li>数据集分析&amp;Tokenization方法确定：<ol>
+<li>分析任务场景下文本数据的空间分布规律：string的字符集，长度(avg,min,max,medium)<br>，前后关联性，语义信息性（自然语言？代码语言？），顺序重要程度，可参考<a href="#%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81%E7%9A%84%E6%80%A7%E8%B4%A8">文本特征性质</a> <a id="规律分析STEP"></a></li>
+<li>分析潜在的重要特征（distinguishable）</li>
+<li>确定基本的降噪预处理过程（参考<a href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%99%8D%E5%99%AA">基础降噪过程</a>）</li>
+<li>确定分词方法（参考<a href="#%E5%88%86%E8%AF%8D">分词方法</a>）</li>
+<li>如有必要，可以进行特征补充（参考<a href="#%E7%89%B9%E6%AE%8A%E5%88%86%E8%AF%8D%E8%A1%A5%E5%85%85">分词补充</a>）</li>
+<li>迭代1.3-1.5的过程，直到选出最为合适的Tokenization方法</li>
+</ol>
 </li>
-<li><p>数据集分析&amp;Embeddings方法确定：</p>
-<p> 2.1 选择合适的Embeddings方法（参考<a href="#Embeddings">Embeddings</a>）</p>
-<p> 2.2 对映射得到的特征向量集合X进行数据分析；查看其分布规律&amp;可分性</p>
+<li>数据集分析&amp;Embeddings方法确定：<ol>
+<li>选择合适的Embeddings方法（参考<a href="#Embeddings">Embeddings</a>）</li>
+<li>对映射得到的特征向量集合X进行数据分析；查看其分布规律&amp;可分性</li>
+</ol>
 </li>
-<li><p>模型选择：</p>
-<p> 3.1 传统ML模型：使用传统的ML模型对</p>
+<li>模型选择：<ol>
+<li>传统ML模型：使用传统的ML模型对</li>
+</ol>
 </li>
 </ol>
 <p>在实际研究中流程不一定是顺序执行的，每一步做到一定程度就可以move on到下一步了（毕竟做到后面也有可能想出前述步骤的改进方法）；一般而言遵循三个阶段：</p>
 <ol>
-<li><p>快速分析：使用基础的tokenization，embeddings和model对任务难度与数据分布规律进行快速分析（推荐使用KNN进行聚集程度分析，Naive Bayes进行概率分布分析，<br>LR进行线性可分验证，RF进行特征可分性验证，MLP尝试进行非线性可分的验证）</p>
-</li>
-<li><p>预处理选优：基于上一阶段分析结果，选择一个较好的基础模型以寻找最好的预处理（Tokenization,<br>Embeddings）方法集；（一般而言这一步在1-3个ML模型上验证就ok，同时结合人工对数据分布规律的分析）</p>
-</li>
-<li><p>模型选优：基于最合适的预处理方法，寻找最佳ML/DL模型</p>
-</li>
+<li>快速分析：使用基础的tokenization，embeddings和model对任务难度与数据分布规律进行快速分析（推荐使用KNN进行聚集程度分析，Naive Bayes进行概率分布分析，<br>LR进行线性可分验证，RF进行特征可分性验证，MLP尝试进行非线性可分的验证）</li>
+<li>预处理选优：基于上一阶段分析结果，选择一个较好的基础模型以寻找最好的预处理（Tokenization,<br>Embeddings）方法集；（一般而言这一步在1-3个ML模型上验证就ok，同时结合人工对数据分布规律的分析）</li>
+<li>模型选优：基于最合适的预处理方法，寻找最佳ML/DL模型</li>
 </ol>
 <p>不过由于近年来Transformer-based的方法嘎嘎乱啥，而且基本上transformer-based<br>的方法已经把特征工程和模型两个模块都打包好了（毕竟embeddings模块也是要学的），有时候直接进行微调这种也是可行的，在这种情况下基本上只需要遵循下面三个步骤：</p>
 <ol>
-<li><p>快速分析：同上一部分，依旧需要对任务难度等具备大致理解</p>
-</li>
-<li><p>预处理选优：一般情况下Transformer-based的主流框架已经包含分词tokenization<br>器了，预处理阶段的工作主要是分析任务场景，尝试减少数据噪声（避免模型过拟合到一些意想不到的特征乃至测试集泄露）</p>
-</li>
-<li><p>模型选优：查看模型训练的主数据集，分析主数据集与当前任务数据集的相似程度，并尝试apply多个模型进行实验（取决于有多少卡）</p>
-<p>3.1 ps: 想上大一点的模型，比如直接上GPT尝试叠精度没准也是可以的XD，不过考虑在工程应用中的场景（比如模型可能是离线部署在移动设备上的），因此模型是需要在速度和精度两个方面做好权衡的</p>
+<li>快速分析：同上一部分，依旧需要对任务难度等具备大致理解</li>
+<li>预处理选优：一般情况下Transformer-based的主流框架已经包含分词tokenization<br>器了，预处理阶段的工作主要是分析任务场景，尝试减少数据噪声（避免模型过拟合到一些意想不到的特征乃至测试集泄露）</li>
+<li>模型选优：查看模型训练的主数据集，分析主数据集与当前任务数据集的相似程度，并尝试apply多个模型进行实验（取决于有多少卡）<ul>
+<li>ps: 想上大一点的模型，比如直接上GPT尝试叠精度没准也是可以的XD，不过考虑在工程应用中的场景（比如模型可能是离线部署在移动设备上的），因此模型是需要在速度和精度两个方面做好权衡的</li>
+</ul>
 </li>
 </ol>
 <h1 id="经典场景"><a href="#经典场景" class="headerlink" title="经典场景"></a>经典场景</h1><h2 id="垃圾邮件分类问题"><a href="#垃圾邮件分类问题" class="headerlink" title="垃圾邮件分类问题"></a>垃圾邮件分类问题</h2><p>可以使用这个经典数据集（原来是2006年就已经在广泛研究了吗O.o<br><a target="_blank" rel="noopener" href="https://plg.uwaterloo.ca/~gvcormac/treccorpus06/about.html">https://plg.uwaterloo.ca/~gvcormac/treccorpus06/about.html</a><br>(包含中文/英文诈骗邮件分类；full的数据量是：12910 ham, 24912 spam)</p>
@@ -608,7 +606,7 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://frostyhec.github.io/FrostyBlog/2025/05/08/A-Simple-Guideline-for-Solving-Text-Classification-Tasks/" data-id="cmafyjiqi0006vcvshiqo7ico" data-title="A Simple Guideline for Solving Text Classification Tasks" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://frostyhec.github.io/FrostyBlog/2025/05/08/A-Simple-Guideline-for-Solving-Text-Classification-Tasks/" data-id="cmafz40lr0003g8vs210xcwl8" data-title="A Simple Guideline for Solving Text Classification Tasks" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
